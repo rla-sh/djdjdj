@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+<!-- 타이틀 옆에 이미지 -->
+	<link rel="shortcut icon" type="image/x-icon" href="icon-egg-pink.png">
+	<title> ← 인생이 심심하신 분 여기로</title>
+
+
+	<style>
+
+/*한글 굴림체 팝업용*/
+		@font-face {font-family: 'JoseonGulim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+    font-weight: normal; font-display: swap;}
+    
+/*본문 부크크고딕*/
+@font-face {
+    font-family: 'BookkGothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkGothic-Lt.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;}
+
+
+@font-face {
+    font-family: 'BookkGothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkGothic-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;}
+
+h1, h2, p{font-family: 'BookkGothic';
+			font-weight: 700;}
+
+
+
+
+
+body, h1, h2, p, ul, li, img{margin: 0px; padding: 0px;}
+html, body {height: 100%; margin: 0;}
+
+
+
+
+
+/*폰트 컬러*/
+.text-pink{color: #FE01ED}
+.text-yellow{color: #C4FF20}
+.text-blue{color: #2F2AFF}
+
+
+/*폰트 스타일*/
+h2{font-size: 2.5rem;
+	padding: 0px 0px 50px 0px;}	
+p{font-size: 1.6rem;
+	line-height: 1.7;
+	padding: 10px 0px;}
+
+
+/*클래스 지정*/
+	
+.contents-nav{width: 100%; 
+				margin: 0; 
+				align-items: center;}
+/*.contents-sec{width: 100%; margin: 0; box-sizing: border-box;}*/
+.contents-div-center{width: 1000px;
+   					margin: auto; 
+   					height: 100vh; padding: 0; /*padding: 130px 0px;*/
+   					display: flex;
+  					justify-content: center;
+  					align-items: center;}
+.contents-div-left{width: 1000px;
+   					margin: auto; 
+   					height: 100vh; padding: 0;
+  					}
+
+
+.logo{padding: 20px 20px; width: 100px;}
+.menu{display: flex;  align-items: center; }
+.flex{display: flex;}
+.item{display: flex; align-items: center;}
+.item img {width: 100px; height: auto; padding: 0px 20px;}
+/*	.item a {position: relative;
+					z-index: 1;}*/
+
+
+
+.relative{position: relative;}    /*부모에 넣기*/
+.absolute{position: absolute;     /*자식에 넣깅*/
+			left: 0;
+			top: 0;
+			z-index: 9998;}
+
+
+/*효과들...*/
+.bg-blur{backdrop-filter: blur(10px); color: #C4FF20;}
+.mosaic-img {image-rendering: pixelated;
+			filter: blur(20px) brightness(1.1);
+			transition: filter 0.1s ease;
+			cursor: pointer;}
+  	.mosaic-img:hover {filter: none;}
+
+
+
+
+/*이미지 백그라운드 스타일*/
+.pic1 {justify-content: center;
+ 		align-items: center;}
+.background-none{background: none;}
+
+
+
+/*이외 스타일 지정*/
+li{list-style-type: none; padding: 0;}		
+a{display: block;
+	padding:0; 
+	text-decoration: none;}
+img{display: block;}
+	.item img:hover {transform: rotate(15deg);
+    				transition: all 0.2s; 
+  					background: #FE01ED;}
+	/*img:hover{mix-blend-mode: color-dodge; transform: rotate(15deg); transition: all 0.2s;}*/
+
+		
+
+/*이미지 앞뒤*/
+.img-front {position: absolute;
+   		width: 1200px;
+    	left: 50%;
+    	transform: translateX(-50%);
+    	bottom: 110px;
+    	z-index: 2;}
+
+.img-back {position: absolute;
+    	width: 1200px;
+   		left: 50%;
+   		transform: translateX(-50%); 
+   		bottom: 110px;
+    	z-index: 1;}
+
+/*이미지 넣을 빈공간*/
+.img-box {position: relative;
+    		height: 180px;
+    		overflow: visible; 
+    		padding: 0px 0px 35px 0px;}
+
+
+
+body {margin: 0;
+ 	background: url(grassBG.jpg);
+  	background-size: cover;
+  	background-position: center;
+  	background-attachment: fixed;}
+
+nav {position: fixed;
+ 	top: 0;
+ 	left: 0;
+	width: 100%;
+	z-index: 9999}
+
+
+
+
+/*뒤로가기 버튼 index.html에는 없음!*/
+.back-button {position: fixed;
+  		  right: 65px;
+ 		  bottom: 50px;
+ 		  z-index: 9998;}
+
+.back-button img {width: 130px;
+    		height: auto;
+    		cursor: pointer;
+    		transition: all 0.2s;}
+
+.back-button img:hover {transform: scale(1.3);
+					transform: rotate(-15deg);}
+
+
+/*스크롤되는 텍스트박스*/
+.text-box {position: absolute;
+			width: 1070px;
+    		height: 520px;/* 이 높이 넘으면 스크롤댐 */
+    		left: 50%;
+    		top: 50%;
+    		transform: translate(-50%, -38%);
+    		overflow-y: scroll;
+    		z-index: 10;
+    		scrollbar-width: none;}
+
+/*인덱스같이 클릭하는 부분*/
+.click-area {position: absolute;
+				width: 226px;
+				height: 150px;
+				top: -294px;
+				left: -177px;
+				display: block;
+				z-index: 10;
+				/*background: yellowgreen;*/}
+
+
+</style>
+
+</head>
+
+
+<!-- 내비게이션 바 -->
+<body>
+	<nav>
+		<div class="contents-nav flex ">
+			<div class="logo">
+				<img src="egglogo.png" style="width: 100px;">
+			</div>
+				<ul class="menu">
+					<li class="item">
+						<a href="index.html" target="_self">
+							<img src="navi-home.png">
+						</a>
+					</li>
+					<li class="item">
+						<a href="shop.html" target="_self">
+							<img src="navi-shop.png">
+						</a>
+					</li>
+					<li class="item">
+						<a href="about.html" target="_self">
+							<img src="navi-about.png">
+						</a>
+					</li>
+				</ul>
+		</div>
+	</nav>
+
+
+<!-- 여기서부터 내용-->
+<section class="relative">
+	<div class="contents-div-center ">
+		<img src="about-easter-shop.png" class="img-front" 	
+			style="width: 1200px;
+					bottom: 11%;
+					left: 50%;">
+		<img src="about-easter-shop-egg.png" class="img-back" 
+			style="width: 1200px;
+					bottom: 11%;
+					left: 50%;">
+			<!-- 인덱스같이 클릭하는 부분! -->
+			<div class="img-box" > 
+				<a href="about-egg.html" class="click-area"></a>
+			</div>
+	</div>
+	 <div class="text-box contents-div-left" 
+	 		style="top: 50%;
+	 				left: 50%;">
+	 	<h2 class="text-blue">이스터 샵은...</h2>
+<!-- 중간에 끼어드는 말풍선들 -->
+	 		<div class="img-box" style="position: relative">
+   				<img src="box1.png"
+   					style="position: absolute;
+   							width: 32%;
+   							bottom: 0px;
+   							left: 10px;">
+   				<img src="box2.png" style="position: absolute;
+   							width: 49%;
+   							bottom: 163px;
+   							left: 360px;">
+				<img src="box3.png" style="position: absolute;
+   							width: 44%;
+   							bottom: 24px;
+   							left: 136px;">
+   				<img src="box4.png" style="position: absolute;
+   							width: 43%;
+   							bottom: -3px;
+   							left: 587px;">
+   				<img src="box5.png" style="position: absolute;
+   							width: 24%;
+   							bottom: 7px;
+   							left: 488px;">
+			</div>
+<!-- 중간에 끼어드는 말풍선들 -->
+	 	<p class="text-blue" style="padding: 10px 0px 0px 0px;">이런 당신의 인생에 조금의 고생과 재미를, 인생의 이스터에그가 되어줄 물건들을 소개합니다.</p>
+	 	<p class="text-blue">이스터 샵의 시작은, 이스터에그의 의미를 우리 삶에 적용해서 잃어버렸던 <br>순수함에 대해 생각해보고 싶다는 생각부터였어요.</p>
+	 	<p class="text-blue">이스터에그의 의미가 궁금하다면 EGG라고 적힌 인덱스를 눌러보세요.
+	 	<p></p>
+		<p class="text-blue">다시 돌아와서, 이스터 샵에는 여러가지 이스터에그들이 당신을 기다리고 있습니다.</p>
+		<p class="text-blue">절찬리에 할인하고 있으니, 일상에 이스터에그를 직접 더해보세요.</p>
+		<p class="text-pink">이스터에그는 셀프!</p>
+		<p class="text-blue">홈 화면의 스크롤을 내리면, 이스터 샵의 물건들과 함께하는 하루는 어떨지<br>미리 체험해볼 수 있습니다.</p>
+		<p class="text-blue">우선 읽 보시는 것을 추천드립니다.</p>
+		<p class="text-blue">결정은 체험을 해본 뒤에 해도 늦지 않으니까요!</p>
+		<p class="text-blue">하지만 구매할 생각이 아니어도 구경하고 가세요.</p>
+		<p class="text-blue">이 웹사이트 속의 이스터에그를 찾아 눌러보면 무언가 재미있는 일이 일어날지도 몰라요.</p>
+	 </div>
+</section>
+
+
+<!-- 뒤로가기 버튼 -->
+<a href="javascript:history.back()" class="back-button">
+    <img src="button-back.png" alt="뒤로가기">
+</a>
+
+</body>
+</html>
